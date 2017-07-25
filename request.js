@@ -6,7 +6,8 @@ var log = require('./log');
 var r = rp.defaults({
   baseUrl: config.request.baseUrl,
   headers: config.request.headers,
-  json : true
+  json : true,
+  timeout: config.request.timeout
 });
 
 var getCineWorldMoviesCb = function(callback) {

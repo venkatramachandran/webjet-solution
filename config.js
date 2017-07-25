@@ -13,6 +13,7 @@ config.DATA_TIMEOUT = process.env.DATA_TIMEOUT || 120;
 config.request = {};
 config.request.baseUrl = "http://webjetapitest.azurewebsites.net";
 config.request.headers = {"x-access-token": "sjd1HfkjU83ksdsm3802k"};
+config.request.timeout = 1500;
 
 
 module.exports = config;
