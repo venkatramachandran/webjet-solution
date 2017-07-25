@@ -13,7 +13,7 @@ var r = rp.defaults({
 var getCineWorldMoviesCb = function(callback) {
   r.get("/api/cinemaworld/movies")
   .then(function(body){
-    callback(null, body);
+    callback(null, body.Movies);
   })
   .catch(function(err){
     callback(err, null);
@@ -33,7 +33,7 @@ var getCineWorldMovieCb = function(movie_id, callback) {
 var getFilmWorldMoviesCb = function(callback) {
   r.get("/api/filmworld/movies")
   .then(function(body){
-    callback(null, body);
+    callback(null, body.Movies);
   })
   .catch(function(err){
     callback(err, null);
