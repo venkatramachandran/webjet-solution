@@ -6,7 +6,7 @@ var CINE_WORLD_PREFIX = "cineWorld:";
 var FILM_WORLD_PREFIX = "filmWorld:";
 var MOVIES_KEY        = "all";
 
-var getCineWorldMovies = function(callback) {
+var getCineWorldMoviesCb = function(callback) {
 	request.getCineWorldMovies()
 	.then(function(movies){
 		redis.putData(CINE_WORLD_PREFIX+MOVIES_KEY, JSON.stringify(movies));
@@ -23,7 +23,7 @@ var getCineWorldMovies = function(callback) {
 	});
 }
 
-var getCineWorldMovie = function(movie_id, callback) {
+var getCineWorldMovieCb = function(movie_id, callback) {
 	request.getCineWorldMovie(movie_id)
 	.then(function(movie){
 		redis.putData(CINE_WORLD_PREFIX+movie_id, JSON.stringify(movie));
@@ -40,14 +40,14 @@ var getCineWorldMovie = function(movie_id, callback) {
 	});
 }
 
-var getFilmWorldMovies = function(callback) {
+var getFilmWorldMoviesCb = function(callback) {
 	request.getFilmWorldMovies()
 	.then(function(movies){
-		redis.putData(FILM_WORLD_PREFIX+MOVIES_KEY);
+		redis.putData(FILM_WORLD_PREFIX+MOVIES_KEY, JSON.stringify(movies));
 		callback(null, movies);
 	})
 	.catch(function(err){
-		redis.getData(FILM_WORLD_PREFIX+MOVIES_KEY, JSON.stringify(movies))
+		redis.getData(FILM_WORLD_PREFIX+MOVIES_KEY)
 		.then(function(result){
 			callback(null, JSON.parse(result));
 		})
@@ -57,7 +57,7 @@ var getFilmWorldMovies = function(callback) {
 	});
 }
 
-var getFilmWorldMovie = function(movie_id, callback) {
+var getFilmWorldMovieCb = function(movie_id, callback) {
 	request.getFilmWorldMovie(movie_id)
 	.then(function(movie){
 		redis.putData(FILM_WORLD_PREFIX+movie_id, JSON.stringify(movie));

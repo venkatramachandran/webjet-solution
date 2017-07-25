@@ -1,5 +1,5 @@
 var promise = require('bluebird');
-var wrapper = require('./wrapper');
+var wrapper = require('./wrappers');
 
 var getMoviesCb = function(callback) {
     promise.join(
@@ -8,7 +8,7 @@ var getMoviesCb = function(callback) {
         function(cineworld_movies, filmworld_movies){
             var movies = [];
             movies = movies.concat(cineworld_movies);
-            movies = moves.concat(filmworld_movies);
+            movies = movies.concat(filmworld_movies);
             callback(null, movies);
         });
 }
@@ -20,8 +20,10 @@ var getMovieCb = function(movie_id, callback) {
         function(cineworld_movie, filmworld_movie){
             var movie = {};
             movie = JSON.parse(JSON.stringify(cineworld_movie));
-            movie.cineworld_id = movie.id;
-            movie.filmworld_id = filmworld_movie.id;
+            movie.cineworld_id = cineworld_movie && cineworld_movie.id ? movie.id: '';
+            movie.filmworld_id = filmworld_movie && filmworld_movie.id ? filmworld_movie.id : '';
+            movie.cineworld_price = cineworld_movie && cineworld_movie.Price ? movie.Price: '';
+            movie.filmworld_price = filmworld_movie && filmworld_movie.Price ? filmworld_movie.Price : '';            
             delete movie.id;
             callback(null, movie);
         });

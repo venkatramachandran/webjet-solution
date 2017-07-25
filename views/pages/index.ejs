@@ -7,7 +7,7 @@
 <body>
     <% movies.forEach(function(movie) { %>
     <div class="movie">
-        <%= movie.Title %>
+        <a href="/movies/<%= movie.cineworld_id%>"><%= movie.Title %></a>
     </div>
     <% });%>
 </body>

@@ -4,7 +4,8 @@
   "description": "Book cheap tickets for any movie",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "start": "node index.js"
   },
   "keywords": [
     "movies",

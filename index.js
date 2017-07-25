@@ -1,5 +1,6 @@
 var express = require('express');
 var log = require('./log');
+var api = require('./api');
 
 var app = express();
 app.set('view engine', 'ejs')
@@ -14,7 +15,7 @@ app.get('/', function (req, res) {
   });
 })
 
-app.get('/:movie_id', function(req, res){
+app.get('/movies/:movie_id', function(req, res){
     log.info("starting handler for /movieid");
     //send movie.html with api.getMovie()
     api.getMovie(req.params.movie_id)
