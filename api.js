@@ -7,6 +7,8 @@ var getMoviesCb = function(callback) {
         wrapper.getFilmWorldMovies(),
         function(cineworld_movies, filmworld_movies){
             var movies = [];
+            movies = movies.concat(cineworld_movies);
+            movies = moves.concat(filmworld_movies);
             callback(null, movies);
         });
 }
@@ -17,6 +19,10 @@ var getMovieCb = function(movie_id, callback) {
         wrapper.getFilmWorldMovie(movie_id),
         function(cineworld_movie, filmworld_movie){
             var movie = {};
+            movie = JSON.parse(JSON.stringify(cineworld_movie));
+            movie.cineworld_id = movie.id;
+            movie.filmworld_id = filmworld_movie.id;
+            delete movie.id;
             callback(null, movie);
         });
 }
