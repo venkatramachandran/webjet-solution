@@ -35,6 +35,7 @@ var getCineWorldMoviesCb = function(callback) {
 };
 
 var getCineWorldMovieCb = function(movie_id, callback) {
+	if (!movie_id) callback(null, {});
 	request.getCineWorldMovie(movie_id)
 	.then(function(movie){
 		redis.putData(CINE_WORLD_PREFIX+movie_id, JSON.stringify(movie));
@@ -85,6 +86,7 @@ var getFilmWorldMoviesCb = function(callback) {
 };
 
 var getFilmWorldMovieCb = function(movie_id, callback) {
+	if (!movie_id) callback(null, {});
 	request.getFilmWorldMovie(movie_id)
 	.then(function(movie){
 		redis.putData(FILM_WORLD_PREFIX+movie_id, JSON.stringify(movie));
