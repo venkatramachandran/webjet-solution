@@ -10,7 +10,7 @@
 <body>
     <% movies.forEach(function(movie) { %>
     <div class="movie">
-        <a href="/movies/<%= movie.cineworld_id%>"><%= movie.Title %></a>
+        <a href="/movies/<%= movie.ID.cineWorld%>-<%= movie.ID.filmWorld%>"><%= movie.Title %></a>
     </div>
     <% });%>
 </body>

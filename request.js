@@ -18,10 +18,10 @@ var getCineWorldMoviesCb = function(callback) {
     callback(null, body.Movies);
   })
   .catch(function(err){
-    log.info("ending request for cine world movies with error");
+    log.info("ending request for cine world movies with error:"+err);
     callback(err, null);
   });
-}
+};
 
 var getCineWorldMovieCb = function(movie_id, callback) {
   log.info("starting request for cine world movie");
@@ -31,10 +31,10 @@ var getCineWorldMovieCb = function(movie_id, callback) {
     callback(null, body);
   })
   .catch(function(err){
-    log.info("ending request for cine world movie with error");
+    log.info("ending request for cine world movie with error:"+err);
     callback(err, null);
   });
-}
+};
 
 var getFilmWorldMoviesCb = function(callback) {
   log.info("starting request for film world movies");
@@ -44,10 +44,10 @@ var getFilmWorldMoviesCb = function(callback) {
     callback(null, body.Movies);
   })
   .catch(function(err){
-    log.info("ending request for film world movies with error");
+    log.info("ending request for film world movies with error:"+err);
     callback(err, null);
   });
-}
+};
 
 var getFilmWorldMovieCb = function(movie_id, callback) {
   log.info("starting request for film world movie");
@@ -57,10 +57,10 @@ var getFilmWorldMovieCb = function(movie_id, callback) {
     callback(null, body);
   })
   .catch(function(err){
-    log.info("ending request for film world movie with error");
+    log.info("ending request for film world movie with error:"+err);
     callback(err, null);
   });
-}
+};
 
 var getCineWorldMovies = promise.promisify(getCineWorldMoviesCb);
 var getCineWorldMovie = promise.promisify(getCineWorldMovieCb);
