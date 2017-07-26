@@ -3,14 +3,14 @@
 <head>
     <title>Movies</title>
 </head>
-<!-- 
-    TODO: GET MORE INFO IN UI
-    TODO: FIX LAYOUT
--->
 <body>
+    <h2>What would you like to see?</h2>
     <% movies.forEach(function(movie) { %>
-    <div class="movie">
-        <a href="/movies/<%= movie.ID.cineWorld%>-<%= movie.ID.filmWorld%>"><%= movie.Title %></a>
+    <div>
+        <img width="150" height="150"  src="<%= movie.Poster %>"/>
+        <a href="/movies/<%= movie.ID.cineWorld%>/<%= movie.ID.filmWorld%>/"><%= movie.Title %> 
+            (<%= movie.Year%>)
+        </a>
     </div>
     <% });%>
 </body>

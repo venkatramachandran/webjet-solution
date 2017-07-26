@@ -3,15 +3,35 @@
 <head>
     <title>Movie</title>
 </head>
-<!-- 
-    TODO: GET MORE INFO IN UI
-    TODO: FIX LAYOUT
--->
 <body>
-    <div class="movie">
-        <%= movie.Title %>
-        <%= movie.Price.cineWorld %>
-        <%= movie.Price.filmWorld %>
+    <div>
+        <img width="150" height="150" src="<%= movie.Poster %>"/>
+        <h1><%= movie.Title %> (<%= movie.Year%>)</h1>
+        <br/>
+        Rating: <%= movie.Rating %><br/>
+        Release Date: <%= movie.Released %><br/>
+        Total Running Time: <%= movie.Runtime %><br/>
+        Genre: <%= movie.Genre %><br/>
+        Director: <%= movie.Director %><br/>
+        Actors: <%= movie.Actors %><br/>
+        Plot: <%= movie.Plot %><br/>
+        Awards: <%= movie.Awards %><br/>
+        Language: <%= movie.Language %><br/>
+        Prices:<br/>
+        <table border="1">
+            <tr>
+                <td>Provider</td>
+                <td>Price</td>
+            </tr>
+            <tr>
+                <td>Cine World</td>
+                <td>$<%= movie.Price.cineWorld %></td>
+            </tr>
+            <tr>
+                <td>Film World</td>
+                <td>$<%= movie.Price.filmWorld %></td>
+            </tr>
+        </table>
     </div>
 </body>
 

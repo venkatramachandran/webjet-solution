@@ -15,7 +15,7 @@ app.get('/', function (req, res) {
   });
 });
 
-app.get('/movies/:cineworld_movie_id-:filmworld_movie_id', function(req, res){
+app.get('/movies/:cineworld_movie_id/:filmworld_movie_id/', function(req, res){
     log.info("starting handler for /movieid");
     //send movie.html with api.getMovie()
     api.getMovie(req.params.cineworld_movie_id, req.params.filmworld_movie_id)
