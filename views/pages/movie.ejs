@@ -23,14 +23,18 @@
                 <td>Provider</td>
                 <td>Price</td>
             </tr>
+            <% if (movie.Price.cineWorld) { %>
             <tr>
                 <td>Cine World</td>
                 <td>$<%= movie.Price.cineWorld %></td>
             </tr>
+            <% } %>
+            <% if (movie.Price.filmWorld) { %>
             <tr>
                 <td>Film World</td>
                 <td>$<%= movie.Price.filmWorld %></td>
             </tr>
+            <% } %>
         </table>
     </div>
 </body>

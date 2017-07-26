@@ -1,12 +1,13 @@
 var promise = require('bluebird');
-var wrapper = require('./wrappers');
+var CineWorldAPI = require('./CineWorldAPI');
+var FilmWorldAPI = require('./FilmWorldAPI');
 var _ = require('lodash');
 var log = require('./log');
 
 var getMoviesCb = function(callback) {
     promise.join(
-        wrapper.getCineWorldMovies(),
-        wrapper.getFilmWorldMovies(),
+        CineWorldAPI.getMovies(),
+        FilmWorldAPI.getMovies(),
         function(cineworld_movies, filmworld_movies){
             var movies = [];
             var cineworld_titles = _.map(cineworld_movies, "Title");
@@ -30,8 +31,8 @@ var getMoviesCb = function(callback) {
 
 var getMovieCb = function(cineworld_movie_id, filmworld_movie_id, callback) {
     promise.join(
-        wrapper.getCineWorldMovie(cineworld_movie_id),
-        wrapper.getFilmWorldMovie(filmworld_movie_id),
+        CineWorldAPI.getMovie(cineworld_movie_id),
+        FilmWorldAPI.getMovie(filmworld_movie_id),
         function(cineworld_movie, filmworld_movie){
             callback(null, merge(cineworld_movie, filmworld_movie));
         });

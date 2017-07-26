@@ -15,10 +15,10 @@ app.get('/', function (req, res) {
   });
 });
 
-app.get('/movies/:cineworld_movie_id/:filmworld_movie_id/', function(req, res){
+app.get('/movies', function(req, res){
     log.info("starting handler for /movieid");
     //send movie.html with api.getMovie()
-    api.getMovie(req.params.cineworld_movie_id, req.params.filmworld_movie_id)
+    api.getMovie(req.query.cineworld_movie_id, req.query.filmworld_movie_id)
     .then(function(movie){
         log.info("Got movie. Rendering page");
         res.render("pages/movie", {movie: movie});

@@ -8,7 +8,7 @@
     <% movies.forEach(function(movie) { %>
     <div>
         <img width="150" height="150"  src="<%= movie.Poster %>"/>
-        <a href="/movies/<%= movie.ID.cineWorld%>/<%= movie.ID.filmWorld%>/"><%= movie.Title %> 
+        <a href="/movies?cineworld_movie_id=<%= movie.ID.cineWorld%>&filmworld_movie_id=<%= movie.ID.filmWorld%>"><%= movie.Title %> 
             (<%= movie.Year%>)
         </a>
     </div>
