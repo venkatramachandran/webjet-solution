@@ -14,4 +14,4 @@ To install dependencies, run `npm install`.
 To run, run `npm start`. The UI should be available at `http://localhost:8080/`.
 
 ## Tests
-TODO
+To run, run `npm test`. Tests are run and a coverge report is created.
