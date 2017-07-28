@@ -1,42 +1,37 @@
-<html>
-
-<head>
-    <title>Movie</title>
-</head>
-<body>
-    <div>
-        <img width="150" height="150" src="<%= movie.Poster %>"/>
-        <h1><%= movie.Title %> (<%= movie.Year%>)</h1>
-        <br/>
-        Rating: <%= movie.Rating %><br/>
-        Release Date: <%= movie.Released %><br/>
-        Total Running Time: <%= movie.Runtime %><br/>
-        Genre: <%= movie.Genre %><br/>
-        Director: <%= movie.Director %><br/>
-        Actors: <%= movie.Actors %><br/>
-        Plot: <%= movie.Plot %><br/>
-        Awards: <%= movie.Awards %><br/>
-        Language: <%= movie.Language %><br/>
-        Prices:<br/>
-        <table border="1">
-            <tr>
-                <td>Provider</td>
-                <td>Price</td>
-            </tr>
+    <md-card md-theme="default">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline"><%= movie.Title %> (<%= movie.Year%>)</span>
+            <span class="md-subhead">
+                Rating: <%= movie.Rating %> &nbsp;
+                Release Date: <%= movie.Released %><br/>
+            </span>
+          </md-card-title-text>
+            <md-card-title-media>
+            <div class="md-media-lg card-media">
+                <img style="width:150px; height:150px" ng-src="<%= movie.Poster %>" class="md-card-image" alt="<%= movie.Title %>">
+            </div>
+          </md-card-title-media>
+        </md-card-title>
+        <md-card-content>
+            <p>
+                <br/>
+                Total Running Time: <%= movie.Runtime %><br/>
+                Genre: <%= movie.Genre %><br/>
+                Director: <%= movie.Director %><br/>
+                Actors: <%= movie.Actors %><br/>
+                Plot: <%= movie.Plot %><br/>
+                Awards: <%= movie.Awards %><br/>
+                Language: <%= movie.Language %><br/>
+            </p>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
             <% if (movie.Price.cineWorld) { %>
-            <tr>
-                <td>Cine World</td>
-                <td>$<%= movie.Price.cineWorld %></td>
-            </tr>
+                <md-button class="md-primary">Cine World : $<%= movie.Price.cineWorld %></md-button>
             <% } %>
             <% if (movie.Price.filmWorld) { %>
-            <tr>
-                <td>Film World</td>
-                <td>$<%= movie.Price.filmWorld %></td>
-            </tr>
+                <md-button class="md-primary">Film World : $<%= movie.Price.filmWorld %></md-button>
             <% } %>
-        </table>
-    </div>
-</body>
-
-</html>
+          
+        </md-card-actions>
+    </md-card>

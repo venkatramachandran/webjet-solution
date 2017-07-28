@@ -1,17 +1,54 @@
-<html>
+<html lang="en">
 
 <head>
     <title>Movies</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+    <script type="text/javascript">    
+        angular.module('movies', ['ngMaterial'])
+        .controller("MoviesController", function($scope, $mdDialog){
+            $scope.moreInfo = function(cw_id, fw_id){
+                $mdDialog.show({
+                    templateUrl: "/movies?cineworld_movie_id="+cw_id+"&filmworld_movie_id="+fw_id,
+                    parent: angular.element(document.body),
+                    clickOutsideToClose: true
+                });
+            };
+        });
+    </script>    
 </head>
-<body>
-    <h2>What would you like to see?</h2>
+<body ng-app="movies" ng-controller="MoviesController" ng-cloak>
+    <md-content class="md-padding" layout="row">
+      <md-card md-theme="default">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">What would you like to see?</span>
+          </md-card-title-text>
+        </md-card-title>
+      </md-card>
+    </md-content>
     <% movies.forEach(function(movie) { %>
-    <div>
-        <img width="150" height="150"  src="<%= movie.Poster %>"/>
-        <a href="/movies?cineworld_movie_id=<%= movie.ID.cineWorld%>&filmworld_movie_id=<%= movie.ID.filmWorld%>"><%= movie.Title %> 
-            (<%= movie.Year%>)
-        </a>
-    </div>
+    <md-card md-theme="default">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline"><%= movie.Title %></span>
+            <span class="md-subhead"><%= movie.Year%></span>
+          </md-card-title-text>
+            <md-card-title-media>
+            <div class="md-media-lg card-media">
+                <img style="width:150px; height:150px" ng-src="<%= movie.Poster %>" class="md-card-image" alt="<%= movie.Title %>">
+            </div>
+          </md-card-title-media>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button class="md-primary" ng-click="moreInfo('<%= movie.ID.cineWorld %>','<%= movie.ID.filmWorld %>')">More Info</md-button>
+        </md-card-actions>
+    </md-card>
     <% });%>
 </body>
 

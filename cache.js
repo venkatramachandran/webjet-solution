@@ -8,7 +8,7 @@ var cache = new nodeCache({stdTTL: 120, checkperiod: 100});
 
 var putData = function(key, value){
   log.debug("trying to put key "+key + " into cache.");
-  var status = cache.set(key, value, config.DATA_TIMEOUT)
+  var status = cache.set(key, value, config.DATA_TIMEOUT);
   if (status) {
     log.debug("successfully put data into cache");
     return true;

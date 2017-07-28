@@ -38,19 +38,14 @@ var getMovieCb = function(movie_id, callback) {
 		callback(null, movie);
 	})
 	.catch(function(err){
-		cache.getData(cacheKey)
-		.then(function(result){
-			if (result) {
-				log.debug("data exists in cache in getMovieCb");
-				callback(null, result);
-			} else {
-				log.debug("data not exists in cache in getMovieCb");
-				callback(null, {});
-			}
-		})
-		.catch(function(err){
+		var result = cache.getData(cacheKey);
+		if (result) {
+			log.debug("data exists in cache in getMovieCb");
+			callback(null, result);
+		} else {
+			log.debug("data not exists in cache in getMovieCb");
 			callback(null, {});
-		});
+		}
 	});
 };
 
