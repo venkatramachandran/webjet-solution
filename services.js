@@ -6,15 +6,16 @@ var _ = require('lodash');
 
 var getMoviesCb = function(callback) {
 	log.debug("starting getMoviesCb");
-	request(_GET_MOVIES_API_URL)
+	var cacheKey = this._KEY_PREFIX+this._MOVIES_KEY;
+	request(this._GET_MOVIES_API_URL)
 	.then(function(movies){
 		log.debug("API call success in getMoviesCb");
-		cache.putData(_KEY_PREFIX+_MOVIES_KEY, movies.Movies);
+		cache.putData(cacheKey, movies.Movies);
 		callback(null, movies.Movies);
 	})
 	.catch(function(err){
 		log.debug("API call failed in getMoviesCb:"+err);
-		var result = cache.getData(_KEY_PREFIX+_MOVIES_KEY);
+		var result = cache.getData(cacheKey);
 		if (result) {
 			log.debug("data exists in cache in getMoviesCb");
 			callback(null, result);
@@ -30,13 +31,14 @@ var getMovieCb = function(movie_id, callback) {
 		callback(null, {});
 		return;
 	}
-	request(_GET_MOVIE_API_URL + movie_id)
+	var cacheKey = this._KEY_PREFIX+movie_id;
+	request(this._GET_MOVIE_API_URL + movie_id)
 	.then(function(movie){
-		cache.putData(_KEY_PREFIX+movie_id, movie);
+		cache.putData(cacheKey, movie);
 		callback(null, movie);
 	})
 	.catch(function(err){
-		cache.getData(_KEY_PREFIX+movie_id)
+		cache.getData(cacheKey)
 		.then(function(result){
 			if (result) {
 				log.debug("data exists in cache in getMovieCb");

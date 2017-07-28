@@ -1,3 +1,3 @@
-var FilmWorldAPI = require('./services')('filmworld');
+var CineWorldAPI = require('./services')('cineworld');
 
-module.exports = FilmWorldAPI;
+module.exports = CineWorldAPI;

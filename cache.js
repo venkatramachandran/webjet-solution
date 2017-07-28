@@ -20,7 +20,7 @@ var putData = function(key, value){
 
 var getData = function(key){
   log.debug("trying to get key "+key + " from cache.");
-  var value = client.get(key);
+  var value = cache.get(key);
   if (value) {
     log.debug("successfully got data from cache");
     return value;    
