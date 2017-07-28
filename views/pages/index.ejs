@@ -32,7 +32,8 @@
         </md-card-title>
       </md-card>
     </md-content>
-    <% movies.forEach(function(movie) { %>
+    <% if (movies.length > 0) {
+      movies.forEach(function(movie) { %>
     <md-card md-theme="default">
         <md-card-title>
           <md-card-title-text>
@@ -49,7 +50,18 @@
           <md-button class="md-primary" ng-click="moreInfo('<%= movie.ID.cineWorld %>','<%= movie.ID.filmWorld %>')">More Info</md-button>
         </md-card-actions>
     </md-card>
-    <% });%>
+    <% });
+    } else {%>
+      <md-content class="md-padding" layout="row">
+        <md-card md-theme="default">
+          <md-card-title>
+            <md-card-title-text>
+              <span class="md-headline">We broke! Nothing to see now!</span>
+            </md-card-title-text>
+          </md-card-title>
+        </md-card>
+      </md-content>
+    <%}%>
 </body>
 
 </html>
