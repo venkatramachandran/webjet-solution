@@ -1,3 +1,3 @@
-var CineWorldAPI = require('./services')('cineworld');
+var CineWorldAPI = require('./services')('cinemaworld');
 
 module.exports = CineWorldAPI;
